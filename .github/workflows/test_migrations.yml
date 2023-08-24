@@ -11,7 +11,7 @@ env:
   SCHEMAS: public
 
 jobs:
-  "Test migrations":
+  test_migrations:
     runs-on: ubuntu-latest
     steps:
     - name: Git Checkout
