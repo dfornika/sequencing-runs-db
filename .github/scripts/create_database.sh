@@ -1,3 +1,3 @@
 #!/bin/bash
 
-psql -U postgres -f .github/scripts/create_database.pgsql
+psql -U postgres -h localhost -f .github/scripts/create_database.pgsql
