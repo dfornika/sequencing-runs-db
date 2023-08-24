@@ -21,7 +21,8 @@ jobs:
     - name: Create Database
       run: >-
         ./.github/scripts/create_database.sh
-    - name: Continuous Integration Flyway Clean Migrate
+    - name: Flyway Migrate
+      environment: actions
       run: >-
         docker run --rm \
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
