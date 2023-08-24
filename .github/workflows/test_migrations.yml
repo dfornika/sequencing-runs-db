@@ -25,8 +25,8 @@ jobs:
     - name: Setup Flyway
       run: >-
         wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/9.21.2/flyway-commandline-9.21.2-linux-x64.tar.gz
-	tar -xzf flyway-commandline-9.21.2-linux-x64.tar.gz
-	ln -s `pwd`/flyway-9.21.2/flyway /usr/local/bin
+        tar -xzf flyway-commandline-9.21.2-linux-x64.tar.gz
+        ln -s `pwd`/flyway-9.21.2/flyway /usr/local/bin
     - name: Flyway Migrate
       run: >-
         ./.github/scripts/apply_migraions.sh
