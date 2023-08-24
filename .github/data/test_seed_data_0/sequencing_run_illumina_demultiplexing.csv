@@ -1,0 +1,2 @@
+pk,sequencing_run_illumina_fk,demultiplexing_id_global,demultiplexing_id_runlocal,samplesheet_path
+1,1,230824_M00123_048_000000000-AG6BT,230824_M00123_048_000000000-AG6BT-DMX1,DMX1,/data/sequence/miseq/runs/230824_M00123_048_000000000-AG6BT/Alignment_1/20230825_075233/SampleSheetUsed.csv

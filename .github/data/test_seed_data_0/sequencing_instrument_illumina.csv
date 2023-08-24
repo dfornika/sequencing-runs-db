@@ -1,0 +1,5 @@
+pk,instrument_id,instrument_type
+1,M00123,MiSeq
+2,M00456,MiSeq
+3,VH00123,NextSeq2000
+4,VH00456,NextSeq2000

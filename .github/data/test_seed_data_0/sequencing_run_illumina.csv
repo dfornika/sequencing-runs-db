@@ -1,0 +1,2 @@
+pk,sequencing_run_id,flowcell_id,instrument_id,experiment_name,run_date,cluster_count,cluster_count_passed_filter,first_cycle_intensity,num_cycles_r1,num_cycles_r2,num_reads_total,num_reads_passed_filter,percent_aligned,percent_occupied,percent_reads_passed_filter,q30_percent,projected_yield_gigabases,yield_gigabases
+1,230824_M00123_048_000000000-AG6BT,000000000-AG6BT,M00123,Test experiment,2023-08-24,6856923,6621945,158.45,151,151,6856923,6621945,96.6,1.331,91.3,96.6,1.445,1.441
