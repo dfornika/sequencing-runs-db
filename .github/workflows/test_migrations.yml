@@ -13,6 +13,7 @@ env:
 jobs:
   test_migrations:
     runs-on: ubuntu-latest
+    environment: actions
     steps:
     - name: Git Checkout
       uses: actions/checkout@v3
@@ -22,7 +23,6 @@ jobs:
       run: >-
         ./.github/scripts/create_database.sh
     - name: Flyway Migrate
-      environment: actions
       run: >-
         docker run --rm \
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
