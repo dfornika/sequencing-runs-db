@@ -22,15 +22,14 @@ jobs:
     - name: Create Database
       run: >-
         ./.github/scripts/create_database.sh
+    - name: Setup Flyway
+      run: >-
+        wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/9.21.2/flyway-commandline-9.21.2-linux-x64.tar.gz
+	tar -xzf flyway-commandline-9.21.2-linux-x64.tar.gz
+	ln -s `pwd`/flyway-9.21.2/flyway /usr/local/bin
     - name: Flyway Migrate
       run: >-
-        docker run --rm \
-          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro \
-          "${{ env.DOCKER_IMAGE }}" \
-          -url="${{ secrets.DB_BUILD_URL }}" \
-          -user="${{ secrets.DB_BUILD_USERNAME }}" \
-          -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-          -cleanDisabled=false clean migrate -schemas="${{ env.SCHEMAS }}"
+        ./.github/scripts/apply_migraions.sh
     - uses: actions/upload-artifact@v1
       with:
         name: report
