@@ -1,0 +1,38 @@
+name: "Test migrations"
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  SQLFLUFF_DIALECT: postgres
+  DOCKER_IMAGE: flyway/flyway:9.21
+  SCHEMAS: public
+
+jobs:
+  "Test migrations":
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git Checkout
+      uses: actions/checkout@v3
+    - name: Setup PostgreSQL
+      uses: harmon758/postgresql-action@v1
+      with:
+        postgresql version: '15'
+    - name: Create Database
+      run: >-
+        ./.github/scripts/create_database.sh
+    - name: Continuous Integration Flyway Clean Migrate
+      run: >-
+        docker run --rm
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
+          "${{ env.DOCKER_IMAGE }}"
+          -url="${{ secrets.DB_BUILD_URL }}"
+          -user="${{ secrets.DB_BUILD_USERNAME }}"
+          -password="${{ secrets.DB_BUILD_PASSWORD }}"
+          -cleanDisabled=false clean migrate -schemas="${{ env.SCHEMAS }}"
+    - uses: actions/upload-artifact@v1
+      with:
+        name: report
+        path: report.html
