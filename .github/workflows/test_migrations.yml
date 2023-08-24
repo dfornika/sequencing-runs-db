@@ -17,9 +17,7 @@ jobs:
     - name: Git Checkout
       uses: actions/checkout@v3
     - name: Setup PostgreSQL
-      uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '15'
+      uses: ikalnytskyi/action-setup-postgres@v4
     - name: Create Database
       run: >-
         ./.github/scripts/create_database.sh
