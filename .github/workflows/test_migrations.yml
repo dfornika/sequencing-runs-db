@@ -27,7 +27,7 @@ jobs:
         ./.github/scripts/install_flyway.sh
     - name: Flyway Migrate
       run: >-
-        ./.github/scripts/apply_migraions.sh
+        ./.github/scripts/apply_migrations.sh
     - uses: actions/upload-artifact@v1
       with:
         name: report
