@@ -13,7 +13,7 @@ BEGIN
    END IF;
 END
 $do$;
-CREATE ROLE sequencing_runs_test_user LOGIN PASSWORD 'sequencingrunstestpassword';
+CREATE ROLE sequencing_runs_test_user WITH LOGIN PASSWORD 'sequencingrunstestpassword';
 GRANT ALL PRIVILEGES ON DATABASE sequencing_runs TO sequencing_runs_test_user;
 \c sequencing_runs
 GRANT ALL ON SCHEMA public TO sequencing_runs_test_user;
