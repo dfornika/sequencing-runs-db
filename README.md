@@ -1,5 +1,7 @@
 # sequencing-runs-db
 
+Note: In the diagram below, `id` is used as the primary key field. But in the real database schema, that field is named `pk`. `id` is used in the diagram because using `pk` causes a rendering errror.
+
 ```mermaid
 erDiagram
   sequencing_instrument_illumina {
@@ -79,4 +81,36 @@ erDiagram
     float yield_gigabases
   }
   sequencing_instrument_nanopore ||--o{ sequencing_run_nanopore : oneToMany
+  sequencing_run_nanopore_acquisition {
+    int id PK
+    int sequencing_run_fk FK
+    string basecalling_config_filename
+    int channel_count
+    float events_to_base_ratio
+    string finishing_state
+    int num_bases_total
+    int num_bases_passed_filter
+    int num_reads_total
+    int num_reads_passed_filter
+    string purpose
+    int sample_rate
+    string startup_state
+    string state
+    string stop_reason
+  }
+  sequencing_run_nanopore ||--o{ sequencing_run_nanopore_acquisition : oneToMany
+  sequenced_library_nanopore {
+    int id PK
+    string library_id_global
+    string library_id_runlocal
+    int acquisition_run_fk FK
+    string project_id_samplesheet
+    string project_id_translated
+    string fastq_path_combined
+    string barcode_name
+    string barcode_alias
+    int num_reads
+    int num_bases
+  }
+  sequencing_run_nanopore_acquisition ||--o{ sequenced_library_nanopore : oneToMany
 ```
