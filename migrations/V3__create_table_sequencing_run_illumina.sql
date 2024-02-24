@@ -1,6 +1,6 @@
 CREATE TABLE sequencing_run_illumina (
   pk SERIAL PRIMARY KEY,
-  sequencing_run_id VARCHAR(255) NOT NULL,
+  sequencing_run_id VARCHAR(255) UNIQUE NOT NULL,
   flowcell_id VARCHAR(255),
   instrument_id VARCHAR(255),
   experiment_name VARCHAR(255),
@@ -19,5 +19,6 @@ CREATE TABLE sequencing_run_illumina (
   percent_reads_passed_filter FLOAT,
   q30_percent FLOAT,
   projected_yield_gigabases FLOAT,
-  yield_gigabases FLOAT
+  yield_gigabases FLOAT,
+  CONSTRAINT fk_sequencing_instrument_illumina FOREIGN KEY(instrument_id) REFERENCES sequencing_instrument_illumina(instrument_id)
 );
